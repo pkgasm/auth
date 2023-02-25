@@ -97,7 +97,7 @@ export default class Auth {
 
   async init() {
     const token = this.#getToken();
-    if (token && !this.user) {
+    if (token && !this.#reactiveState.user.get()) {
       this.#setToken(token);
       if (this.#config.user.autoFetch) await this.fetchUser();
     }
